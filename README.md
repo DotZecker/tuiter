@@ -1,7 +1,9 @@
 Tuiter - Easy Twitter Archive Manager
 =====================================
-[![Build Status](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/build.png?b=master)](https://travis-ci.org/DotZecker/tuiter)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/quality-score.png?b=master)](https://travis-ci.org/DotZecker/tuiter)
+[![Build Status](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/build.png?b=master)](https://travis-ci.org/DotZecker/tuiter?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/DotZecker/tuiter/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/DotZecker/tuiter/badge.png)](https://coveralls.io/r/DotZecker/tuiter)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4bd81f57-0612-47d1-9742-513bfe082c53/mini.png)](https://insight.sensiolabs.com/projects/4bd81f57-0612-47d1-9742-513bfe082c53)
 
 ## 1. Installation
 
