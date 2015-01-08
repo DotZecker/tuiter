@@ -81,7 +81,7 @@ final class TweetRepository
 
         return $this->filter(function (Tweet $tweet) use ($startDate, $endDate) {
             return ($tweet->createdAt > $startDate)
-               and ($tweet->createdAt < $endDate);
+                && ($tweet->createdAt < $endDate);
         });
     }
 

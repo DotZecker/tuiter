@@ -65,7 +65,7 @@ final class Tuiter
      */
     private function getFrom($array, $key, $default = null)
     {
-        return (array_key_exists($key, $array) and $array[$key] !== '')
+        return (array_key_exists($key, $array) && $array[$key] !== '')
             ? $array[$key]
             : $default;
     }
