@@ -97,8 +97,8 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
             $tweet1, $tweet2, $tweet3
         ]);
 
-        $tTwitterTweets = $tweetRepository->containsInUrl('twitter');
-        $this->assertSame([$tweet2, $tweet3], $tTwitterTweets->get());
+        $twitterTweets = $tweetRepository->containsInUrl('twitter');
+        $this->assertSame([$tweet2, $tweet3], $twitterTweets->get());
     }
 
     /**
@@ -164,7 +164,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
         ]);
     }
 
-    private function tweetWithUrls($urls = null)
+    private function tweetWithUrls($urls)
     {
         return $this->makeTweet([
             'tweet_id' => '4',
@@ -176,7 +176,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
             'retweeted_status_id' => null,
             'retweeted_status_user_id' => null,
             'retweeted_status_timestamp' => null,
-            'expanded_urls' => $urls ?: 'http://www.ifc0nfig.com/moonpig-vulnerability/,http://www.ifc0nfig.com/moonpig-vulnerability/'
+            'expanded_urls' => $urls
         ]);
     }
 

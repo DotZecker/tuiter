@@ -1,7 +1,7 @@
 Tuiter - Easy Twitter Archive Manager
 =====================================
-
-Purpose for the SQL Schema Builder Interface definition has been build in order to be used as a fixed Facade for existing SQL Schema Builders.
+[![Build Status](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/build.png?b=master)](https://travis-ci.org/DotZecker/tuiter)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DotZecker/tuiter/badges/quality-score.png?b=master)](https://travis-ci.org/DotZecker/tuiter)
 
 ## 1. Installation
 

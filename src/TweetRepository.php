@@ -45,15 +45,16 @@ final class TweetRepository
 
     /**
      * @param $date
+     * @param bool $show
      *
-     * @return self
+     * @return TweetRepository
      */
-    public function before($date)
+    public function before($date, $show = true)
     {
-        $date = $date instanceof \DateTime ? $date : new \DateTime($date);
+        $date = $this->formatDate($date);
 
-        return $this->filter(function (Tweet $tweet) use ($date) {
-            return $tweet->createdAt < $date;
+        return $this->filter(function (Tweet $tweet) use ($date, $show) {
+            return $show === $tweet->createdAt < $date;
         });
     }
 
@@ -64,11 +65,7 @@ final class TweetRepository
      */
     public function after($date)
     {
-        $date = $date instanceof \DateTime ? $date : new \DateTime($date);
-
-        return $this->filter(function (Tweet $tweet) use ($date) {
-            return $tweet->createdAt > $date;
-        });
+        return $this->before($date, false);
     }
 
     /**
@@ -79,13 +76,8 @@ final class TweetRepository
      */
     public function between($startDate, $endDate)
     {
-        $startDate = $startDate instanceof \DateTime
-            ? $startDate
-            : new \DateTime($startDate);
-
-        $endDate = $endDate instanceof \DateTime
-            ? $endDate
-            : new \DateTime($endDate);
+        $startDate = $this->formatDate($startDate);
+        $endDate = $this->formatDate($endDate);
 
         return $this->filter(function (Tweet $tweet) use ($startDate, $endDate) {
             return ($tweet->createdAt > $startDate)
@@ -97,7 +89,7 @@ final class TweetRepository
      * @param $text
      * @param bool $contains
      *
-     * @return TweetRepository
+     * @return self
      */
     public function contains($text, $contains = true)
     {
@@ -108,19 +100,16 @@ final class TweetRepository
 
     /**
      * @param $text
+     * @param bool $contains
      *
      * @return self
      */
-    public function containsInUrl($text)
+    public function containsInUrl($text, $contains = true)
     {
-        return $this->filter(function (Tweet $tweet) use ($text) {
-            foreach ($tweet->expandedUrls as $url) {
-                if (strpos($url, $text)) {
-                    return true;
-                }
-            }
+        return $this->filter(function (Tweet $tweet) use ($text, $contains) {
+            $urls = implode(',', $tweet->expandedUrls);
 
-            return false;
+            return $contains === (bool) strpos($urls, $text);
         });
     }
 
@@ -140,13 +129,10 @@ final class TweetRepository
         return $this->tweets;
     }
 
-    /**
-     * TODO
-     */
-    public function deleteFromAccount()
+    /*public function deleteFromAccount()
     {
         // TODO
-    }
+    }*/
 
     /**
      * @param callable $filter
@@ -156,8 +142,17 @@ final class TweetRepository
     public function filter(callable $filter)
     {
         $tweets = array_filter($this->tweets, $filter);
+
         return new self(array_values($tweets));
     }
 
-
+    /**
+     * @param $date
+     *
+     * @return \DateTime
+     */
+    private function formatDate($date)
+    {
+        return $date instanceof \DateTime ? $date : new \DateTime($date);
+    }
 }

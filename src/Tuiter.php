@@ -35,13 +35,15 @@ final class Tuiter
     }
 
     /**
-     * @param $path
+     * @param mixed $path
      *
      * @return TweetRepository
      */
     public static function fromArchive($path)
     {
-        $self = new self(new Reader($path));
+        $reader = $path instanceof Reader ? $path : new Reader($path);
+
+        $self = new self($reader);
 
         return $self->tweets();
     }
@@ -57,9 +59,9 @@ final class Tuiter
     /**
      * @param $array
      * @param string $key
-     * @param null $default
+     * @param mixed $default
      *
-     * @return null
+     * @return mixed
      */
     private function getFrom($array, $key, $default = null)
     {
