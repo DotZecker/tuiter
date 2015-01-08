@@ -56,7 +56,7 @@ final class Tuiter
 
     /**
      * @param $array
-     * @param $key
+     * @param string $key
      * @param null $default
      *
      * @return null
