@@ -26,13 +26,13 @@ $tweets->retweets()->before('2014-05-20')->get();
 ```
 
 This is the list of filters avaliables:
-    * ->retweets($are = true)
-    * ->replies($are = true)
-    * ->before($date)
-    * ->after($date)
-    * ->between($startDate, $endDate)
-    * ->contains($text, $contains = true)
-    * ->containsInUrl($text)
+* `->retweets($are = true)`
+* `->replies($are = true)`
+* `->before($date)`
+* `->after($date)`
+* `->between($startDate, $endDate)`
+* `->contains($text, $contains = true)`
+* `->containsInUrl($text)`
 
 ## 3. TODO
-    * Delete tweets in your twitter account
+* Delete tweets in your twitter account
