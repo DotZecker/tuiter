@@ -1,0 +1,24 @@
+{
+    "name": "dotzecker/tuiter",
+    "description": "Twitter archive manager",
+    "keywords": ["twitter", "archive", "backup", "manager", "tweets", "delete"],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Rafael Antonio Gómez Casas",
+            "email": "dotzecker@gmail.com",
+            "homepage": "http://rafa.im"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "league/csv": "~6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": { "Tuiter\\": "src/" }
+    }
+}
