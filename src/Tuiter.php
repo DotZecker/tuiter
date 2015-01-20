@@ -9,9 +9,9 @@ use League\Csv\Reader;
 final class Tuiter
 {
     /**
-     * @var TweetRepository
+     * @var TweetCollection
      */
-    private $tweetRepository;
+    private $tweetCollection;
 
     /**
      * @param Reader $reader
@@ -31,13 +31,13 @@ final class Tuiter
             );
         }
 
-        $this->tweetRepository = new TweetRepository($tweets);
+        $this->tweetCollection = new TweetCollection($tweets);
     }
 
     /**
      * @param mixed $path
      *
-     * @return TweetRepository
+     * @return TweetCollection
      */
     public static function fromArchive($path)
     {
@@ -49,11 +49,11 @@ final class Tuiter
     }
 
     /**
-     * @return TweetRepository
+     * @return TweetCollection
      */
     public function tweets()
     {
-        return $this->tweetRepository;
+        return $this->tweetCollection;
     }
 
     /**

@@ -6,7 +6,6 @@ Tuiter - Easy Twitter Archive Manager
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4bd81f57-0612-47d1-9742-513bfe082c53/mini.png)](https://insight.sensiolabs.com/projects/4bd81f57-0612-47d1-9742-513bfe082c53)
 
 ## 1. Installation
-
 The recommended way to install it is through [Composer](http://getcomposer.org). Run the following command in order to install it:
 
 ```sh
@@ -19,12 +18,12 @@ The api is very simple and intuitive:
 use Tuiter\Tuiter;
 
 // Let's load our archive
-$tweets = Tuiter::fromArchive(__DIR__ . 'your/awesome/path/to/tweets.csv');
+$tweets = Tuiter::fromArchive(__DIR__ . '/your/awesome/path/to/tweets.csv');
 ```
 
 Now you are able to manager your tweets in a fluent way, for example:
 ```php
-$tweets->retweets()->before('2014-05-20')->get();
+$unwantedTweets = $tweets->retweets()->before('2014-05-20')->get();
 ```
 
 This is the list of filters avaliables:
@@ -36,5 +35,17 @@ This is the list of filters avaliables:
 * `->contains($text, $contains = true)`
 * `->containsInUrl($text)`
 
-## 3. TODO
-* Delete tweets in your twitter account
+
+## 3. Delete Tweets
+In order to delete tweets from your timeline, the implementantion is:
+```php
+use Tuiter\TweetDestroyer;
+
+$destroyer = TweetDestroyer::withParams(
+    'Consumer Key', 'Consumer Secret', 'Access Token', 'Access Token Secret'
+);
+
+foreach ($unwantedTweets as $tweet) {
+    $destroyer->destroy($tweet);
+}
+```

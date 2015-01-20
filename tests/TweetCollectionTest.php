@@ -1,16 +1,16 @@
 <?php
 
 use Tuiter\Tweet;
-use Tuiter\TweetRepository;
+use Tuiter\TweetCollection;
 
-class TweetRepositoryTest extends PHPUnit_Framework_TestCase
+class TweetCollectionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @test
      */
     public function itShouldFilterByRetweets()
     {
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $this->normalTweet(),
             $this->normalTweet(),
             $this->retweetedTweet()
@@ -28,7 +28,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldFilterByReplies()
     {
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $this->normalTweet(),
             $this->normalTweet(),
             $this->replyTweet(),
@@ -46,7 +46,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldFilterByTime()
     {
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $this->normalTweet('2009-01-01 12:12:12 +0000'),
             $this->normalTweet('2011-01-01 12:12:12 +0000'),
             $this->normalTweet('2012-01-01 12:12:12 +0000'),
@@ -73,7 +73,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
         $tweet2 = $this->normalTweet(null, 'Baby baby baby ohh');
         $tweet3 = $this->normalTweet(null, 'The Lord Of Rings');
 
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $tweet1, $tweet2, $tweet3
         ]);
 
@@ -93,7 +93,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
         $tweet2 = $this->tweetWithUrls('http://rafa.sexy,http://twitter.com/dotzecker');
         $tweet3 = $this->tweetWithUrls('http://twitter.com/dotzecker');
 
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $tweet1, $tweet2, $tweet3
         ]);
 
@@ -106,7 +106,7 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
      */
     public function itShouldCountTheTotalTweets()
     {
-        $tweetRepository = $this->getRepository([
+        $tweetRepository = $this->getCollection([
             $this->normalTweet(),
             $this->normalTweet(),
             $this->replyTweet(),
@@ -193,8 +193,8 @@ class TweetRepositoryTest extends PHPUnit_Framework_TestCase
         );
     }
 
-    private function getRepository(array $tweetRepository)
+    private function getCollection(array $tweetRepository)
     {
-        return new TweetRepository($tweetRepository);
+        return new TweetCollection($tweetRepository);
     }
 }

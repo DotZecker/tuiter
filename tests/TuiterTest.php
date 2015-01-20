@@ -19,16 +19,16 @@ class TuiterTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function itShouldReturnTheTweetRepository()
+    public function itShouldReturnTheTweetCollection()
     {
         $reader = $this->getReader();
 
         $this->assertInstanceOf(
-            'Tuiter\TweetRepository', $this->tuiter->tweets()
+            'Tuiter\TweetCollection', $this->tuiter->tweets()
         );
 
         $this->assertInstanceOf(
-            'Tuiter\TweetRepository', Tuiter::fromArchive($reader)
+            'Tuiter\TweetCollection', Tuiter::fromArchive($reader)
         );
     }
 
@@ -37,7 +37,10 @@ class TuiterTest extends PHPUnit_Framework_TestCase
      */
     protected function getReader()
     {
-        $reader = $this->getMockBuilder('League\Csv\Reader')->disableOriginalConstructor()->getMock();
+        $reader = $this
+                    ->getMockBuilder('League\Csv\Reader')
+                    ->disableOriginalConstructor()
+                    ->getMock();
 
         $reader->method('fetchAssoc')->willReturn([[
             'tweet_id' => '1',

@@ -1,10 +1,10 @@
 <?php namespace Tuiter;
 
 /**
- * Class TweetRepository
+ * Class TweetCollection
  * @package Tuiter
  */
-final class TweetRepository
+final class TweetCollection
 {
     /**
      * @var Tweet[]
@@ -22,7 +22,7 @@ final class TweetRepository
     /**
      * @param bool $are
      *
-     * @return self
+     * @return TweetCollection
      */
     public function retweets($are = true)
     {
@@ -34,7 +34,7 @@ final class TweetRepository
     /**
      * @param bool $are
      *
-     * @return self
+     * @return TweetCollection
      */
     public function replies($are = true)
     {
@@ -47,7 +47,7 @@ final class TweetRepository
      * @param $date
      * @param bool $show
      *
-     * @return TweetRepository
+     * @return TweetCollection
      */
     public function before($date, $show = true)
     {
@@ -61,7 +61,7 @@ final class TweetRepository
     /**
      * @param $date
      *
-     * @return self
+     * @return TweetCollection
      */
     public function after($date)
     {
@@ -72,7 +72,7 @@ final class TweetRepository
      * @param $startDate
      * @param $endDate
      *
-     * @return self
+     * @return TweetCollection
      */
     public function between($startDate, $endDate)
     {
@@ -89,7 +89,7 @@ final class TweetRepository
      * @param $text
      * @param bool $contains
      *
-     * @return self
+     * @return TweetCollection
      */
     public function contains($text, $contains = true)
     {
@@ -102,7 +102,7 @@ final class TweetRepository
      * @param $text
      * @param bool $contains
      *
-     * @return self
+     * @return TweetCollection
      */
     public function containsInUrl($text, $contains = true)
     {
@@ -129,15 +129,10 @@ final class TweetRepository
         return $this->tweets;
     }
 
-    /*public function deleteFromAccount()
-    {
-        // TODO
-    }*/
-
     /**
      * @param callable $filter
      *
-     * @return self
+     * @return TweetCollection
      */
     public function filter(callable $filter)
     {
@@ -155,4 +150,5 @@ final class TweetRepository
     {
         return $date instanceof \DateTime ? $date : new \DateTime($date);
     }
+
 }
