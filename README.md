@@ -13,7 +13,7 @@ composer require dotzecker/tuiter
 ```
 
 ## 2. Usage
-The api is very simple and intuitive:
+The API is very simple and intuitive:
 ```php
 use Tuiter\Tuiter;
 
@@ -21,12 +21,12 @@ use Tuiter\Tuiter;
 $tweets = Tuiter::fromArchive(__DIR__ . '/your/awesome/path/to/tweets.csv');
 ```
 
-Now you are able to manager your tweets in a fluent way, for example:
+Now you are able to manage your tweets in a fluent way, for example:
 ```php
 $unwantedTweets = $tweets->retweets()->before('2014-05-20')->get();
 ```
 
-This is the list of filters avaliables:
+This is the list of available filters:
 * `->retweets($are = true)`
 * `->replies($are = true)`
 * `->before($date)`
@@ -37,7 +37,7 @@ This is the list of filters avaliables:
 
 
 ## 3. Delete Tweets
-In order to delete tweets from your timeline, the implementantion is:
+In order to delete tweets from your timeline, the implementation is:
 ```php
 use Tuiter\TweetDestroyer;
 
