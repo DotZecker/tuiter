@@ -13,6 +13,9 @@ composer require dotzecker/tuiter
 ```
 
 ## 2. Usage
+
+First, download you Twitter archive by clicking "Request your archive" in https://twitter.com/settings/account.
+
 The API is very simple and intuitive:
 ```php
 use Tuiter\Tuiter;
